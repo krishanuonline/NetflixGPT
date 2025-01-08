@@ -4,8 +4,13 @@
 - Using TailwindCSS for design. 
 
 - Header
+- Routing App
 - Login Form
 - Sign Up Form
+- Form Validation
+- useRef hook
+
+
 
 # Features 
 - Login/SignUp Form
