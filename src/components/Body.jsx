@@ -23,8 +23,8 @@ const Body = () => {
       onAuthStateChanged(auth, (user) => {
         //If user sign in
         if (user) {
-          const {uid, email, displayName} = user;
-          dispatch(addUser({uid: uid, email: email, displayName: displayName})); // add to store
+          const {uid, email, displayName, photoURL} = user;
+          dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL})); // add to store
   
         }
         else {

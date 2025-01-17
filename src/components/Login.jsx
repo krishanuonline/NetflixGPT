@@ -2,16 +2,18 @@ import Header from "./Header";
 import bg from "../assets/bg1.jpg";
 import { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validate";
-import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import {auth} from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
 
 const Login = () => {
     const [fromSignIn, setFromSignIn] = useState(true);
     const [errMsg, setErrMsg] = useState(null);
 
     const navigate = useNavigate();
-
+    const dispatch = useDispatch(); 
     const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
@@ -33,9 +35,18 @@ const Login = () => {
             //Signup
             createUserWithEmailAndPassword(auth,emailValue,passwordValue).then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
-                navigate("/browse");
-            
+
+                updateProfile(user, {
+                    displayName: nameValue, photoURL: "https://img.icons8.com/?size=100&id=LPk9CY756Am8&format=png&color=000000"
+                  }).then(() => {
+                    //updated store after getting name and profileURL
+                    const {uid, email, displayName, photoURL} = auth.currentUser;
+                    dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL}));
+                    navigate("/browse");
+                  }).catch((error) => {
+                    setErrMsg(error);
+                  });
+
             })
             .catch((error) => {
                 const errorCode = error.code;
