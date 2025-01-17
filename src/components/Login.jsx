@@ -2,7 +2,7 @@ import Header from "./Header";
 import bg from "../assets/bg1.jpg";
 import { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validate";
-import {createUserWithEmailAndPassword } from "firebase/auth";
+import {createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../utils/firebase";
 
 const Login = () => {
@@ -18,27 +18,44 @@ const Login = () => {
     const toggleSignIn = () => {setFromSignIn(!fromSignIn);}
     //
     const handleButtonClick = ()=>{
-        const eMsg = checkValidateData(name.current.value,email.current.value,password.current.value); 
+        const nameValue = fromSignIn ? "" : name.current?.value || ""; //use empty string if name is not rendered
+        const emailValue = email.current?.value ; 
+        const passwordValue = password.current?.value ; 
+
+        const eMsg = checkValidateData(nameValue,emailValue,passwordValue,fromSignIn); 
         setErrMsg(eMsg);
 
         if(eMsg) return;
 
-        //Signup
-        createUserWithEmailAndPassword(auth, email.current.value,password.current.value).then((userCredential) => {
-            const user = userCredential.user;
-            console.log(user);
-        
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            setErrMsg(errorCode + " - " + errorMessage)
-        });
+        if(!fromSignIn){
+            //Signup
+            createUserWithEmailAndPassword(auth,emailValue,passwordValue).then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrMsg(errorCode + " - " + errorMessage)
+            });
+        }else{
+            //Signin
+            signInWithEmailAndPassword(auth, emailValue,passwordValue).then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                setErrMsg(errorCode + " - " + errorMessage);
+            });
 
-
-
-
+        }
     }
+
+    
+
 
     return (
         <div>
