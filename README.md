@@ -9,7 +9,7 @@
 - Sign Up Form
 - Form Validation
 - useRef hook
-
+- Firebase setup
 
 
 # Features 
