@@ -12,6 +12,8 @@
 - Firebase setup
 - Deploying to production
 - Create signup user in firebase
+- Implement SignIn
+- Create Redux Store with userSlice
 
 
 # Features 
