@@ -2,6 +2,8 @@ import Header from "./Header";
 import bg from "../assets/bg1.jpg";
 import { useRef, useState } from "react";
 import { checkValidateData } from "../utils/validate";
+import {createUserWithEmailAndPassword } from "firebase/auth";
+import {auth} from "../utils/firebase";
 
 const Login = () => {
 
@@ -13,17 +15,29 @@ const Login = () => {
     const password = useRef(null);
 
     //toggle function
-    const toggleSignIn = () => {
-        setFromSignIn(!fromSignIn);
-    }
+    const toggleSignIn = () => {setFromSignIn(!fromSignIn);}
     //
     const handleButtonClick = ()=>{
-        // console.log(email.current.value,password.current.value)
-        const eMsg = checkValidateData(email.current.value,password.current.value); 
+        const eMsg = checkValidateData(name.current.value,email.current.value,password.current.value); 
         setErrMsg(eMsg);
 
-        //signin / Signup
+        if(eMsg) return;
+
+        //Signup
+        createUserWithEmailAndPassword(auth, email.current.value,password.current.value).then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
         
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            setErrMsg(errorCode + " - " + errorMessage)
+        });
+
+
+
+
     }
 
     return (
