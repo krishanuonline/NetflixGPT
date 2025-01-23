@@ -24,6 +24,7 @@
 - Registe for TMDB API
 - Create an app and get access token
 - Get data from TMDB now playing movies list API
+- Create custom hook for useNowPlayingMovies call and store
 
 # Features 
 - Login/SignUp Form
