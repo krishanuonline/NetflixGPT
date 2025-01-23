@@ -16,6 +16,9 @@
 - Create Redux Store with userSlice
 - Implement Sigh Out
 - Update Profile
+- Unsubscribe to the onAuthStateChange callback
+- 
+
 
 - Fetch Movies from TMDB API
 
