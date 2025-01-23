@@ -14,6 +14,10 @@
 - Create signup user in firebase
 - Implement SignIn
 - Create Redux Store with userSlice
+- Implement Sigh Out
+- Update Profile
+
+- Fetch Movies from TMDB API
 
 
 # Features 
