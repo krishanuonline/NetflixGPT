@@ -11,7 +11,7 @@ const Browse = () => {
   useNowPlayingMovies(); //custom hooks
 
   return (
-    <div>
+    <div className='bg-black'>
       <Header/>
       <MainContainer/>
       <SecondaryContainer/>
