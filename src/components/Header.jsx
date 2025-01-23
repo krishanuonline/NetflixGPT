@@ -27,7 +27,7 @@ const Header = () => {
         // const {uid, email, displayName, photoURL} = auth.currentUser;
         const {uid, email, displayName, photoURL} = user;
         dispatch(addUser({uid: uid, email: email, displayName: displayName, photoURL: photoURL})); // add to store
-        console.log(photoURL)
+        console.log(photoURL) 
 
         navigate('/browse');
       }
