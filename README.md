@@ -26,6 +26,8 @@
 - Get data from TMDB now playing movies list API
 - Create custom hook for useNowPlayingMovies call and store
 - Create custom hook for useMovieTrailer call and store
+- Embeded Youtube video
+- Setted up Trailer play in Background
 
 # Features 
 - Login/SignUp Form
