@@ -21,7 +21,9 @@
 
 
 - Fetch Movies from TMDB API
-
+- Registe for TMDB API
+- Create an app and get access token
+- Get data from TMDB now playing movies list API
 
 # Features 
 - Login/SignUp Form
