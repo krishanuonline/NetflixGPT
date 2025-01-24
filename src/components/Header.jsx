@@ -13,6 +13,7 @@ const Header = () => {
   const dispatch = useDispatch(); //Always write hook at the 1st of the component
   const navigate = useNavigate();
   const user = useSelector(store=>store.user);
+  const showGptSearch = useSelector(store=>store.gpt.showGptSearch); // gpt search view 
   
 
   const handleSignout = () => {
@@ -41,7 +42,7 @@ const Header = () => {
 
     return ()=> unsubscribe(); //Unsubscribe when component unmount
   },[])
-
+  
   const handleGptSearchClick = () => {
     dispatch(toggleGptSearchView());
   }
@@ -54,7 +55,7 @@ const Header = () => {
         <div className='flex p-2'>
           <img src={user?.photoURL} alt="ff" className='w-10 h-10 my-auto mx-2' />
           <p className='my-5 py-5 font-bold text-white'>{user?.displayName} </p>
-          <button className='bg-[#b410b9] rounded-lg font-bold text-white my-auto ml-4 px-8 py-2 hover:opacity-80' onClick={handleGptSearchClick}>🔎 GPT Search</button>
+          <button className='bg-[#b410b9] rounded-lg font-bold text-white my-auto ml-4 px-8 py-2 hover:opacity-80' onClick={handleGptSearchClick}>{showGptSearch ? "Back to Home" : "🔎 GPT Search"}</button>
           <button className='bg-[#C11119] rounded-lg font-bold text-white my-auto mx-4 px-5 py-2' onClick={handleSignout}>Sign out</button>
         </div>
       }

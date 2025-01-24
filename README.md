@@ -32,6 +32,10 @@
 - Create Movie Card
 
 - GPT Search featuure
+- Gpt Search bar
+- Gpt Search Page
+- Get OpenAI key
+- Integrate GPT APIs 
 
 # Features 
 - Login/SignUp Form
