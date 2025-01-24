@@ -28,6 +28,10 @@
 - Create custom hook for useMovieTrailer call and store
 - Embeded Youtube video
 - Setted up Trailer play in Background
+- Creater Movie List
+- Create Movie Card
+
+- GPT Search featuure
 
 # Features 
 - Login/SignUp Form

@@ -6,7 +6,7 @@ const SecondaryContainer = () => {
   // console.log(movies);
 
   return (
-    <div>
+    <div className="bg-black">
       {/* Render only if movies and movies.nowPlayingMovies exist */}
       {movies && movies ? (<div className="-mt-60 relative z-10">
         
